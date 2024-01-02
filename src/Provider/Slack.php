@@ -24,7 +24,7 @@ class Slack extends AbstractProvider
      */
     public function getBaseAuthorizationUrl()
     {
-        return 'https://slack.com/oauth/authorize';
+        return 'https://slack.com/openid/connect/authorize';
     }
 
     /**
@@ -36,7 +36,7 @@ class Slack extends AbstractProvider
      */
     public function getBaseAccessTokenUrl(array $params)
     {
-        return 'https://slack.com/api/oauth.access';
+        return 'https://slack.com/api/openid.connect.token';
     }
 
     /**
@@ -48,14 +48,7 @@ class Slack extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        $authorizedUser = $this->getAuthorizedUser($token);
-
-        $params = [
-            'token' => $token->getToken(),
-            'user'  => $authorizedUser->getId()
-        ];
-
-        return 'https://slack.com/api/users.info?'.http_build_query($params);
+        return 'https://slack.com/api/openid.connect.userInfo';
     }
 
     /**
@@ -65,7 +58,7 @@ class Slack extends AbstractProvider
      */
     public function getAuthorizedUserTestUrl($token)
     {
-        return 'https://slack.com/api/auth.test?token=' . $token;
+        return 'https://slack.com/api/openid.connect.userInfo';
     }
 
     /**
