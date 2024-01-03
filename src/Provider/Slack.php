@@ -2,11 +2,12 @@
 
 namespace AdamPaterson\OAuth2\Client\Provider;
 
+use AdamPaterson\OAuth2\Client\Provider\Exception\SlackProviderException;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Token\AccessToken;
+use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
 use Psr\Http\Message\ResponseInterface;
-use AdamPaterson\OAuth2\Client\Provider\Exception\SlackProviderException;
 
 /**
  * Class Slack
@@ -17,6 +18,8 @@ use AdamPaterson\OAuth2\Client\Provider\Exception\SlackProviderException;
  */
 class Slack extends AbstractProvider
 {
+    use BearerAuthorizationTrait;
+
     /**
      * Returns the base URL for authorizing a client.
      *
