@@ -49,7 +49,6 @@ class SlackResourceOwner implements ResourceOwnerInterface
         return $this->response['https://slack.com/user_id'] ?: null;
     }
 
-
     /**
      * Get user name
      *
@@ -137,7 +136,7 @@ class SlackResourceOwner implements ResourceOwnerInterface
      */
     public function getImage192()
     {
-        return $this->response['user']['profile']['image_192'] ?: null;
+        return $this->response['https://slack.com/user_image_192'] ?: null;
     }
 
     /**
